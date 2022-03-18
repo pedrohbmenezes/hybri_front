@@ -4,7 +4,7 @@ import { Observable, throwError, pipe, catchError } from 'rxjs';
 import Swal from 'sweetalert2';
 
 
-const AUTH_API = 'http://localhost:3000';
+const AUTH_API = 'http://localhost:3001';
 const httpOptions = {
   headers: new HttpHeaders({ 'Content-Type': 'application/x-www-form-urlencoded' })
 };

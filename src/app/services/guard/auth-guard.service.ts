@@ -1,3 +1,4 @@
+import { TokenService } from './../token/token.service';
 import { Injectable } from '@angular/core';
 import { CanActivate, Router } from '@angular/router';
 
@@ -6,15 +7,17 @@ import { CanActivate, Router } from '@angular/router';
 })
 export class AuthGuardService implements CanActivate{
 
-  constructor(private router: Router) { }
-  private isAuthenticated: boolean = true;
+  constructor(private router: Router, private tokenService: TokenService) { }
+  private isAuthenticated: boolean = false;
 
   canActivate() {
-    if (!this.isAuthenticated) {
-      // redirect to some view explaining what happened
+    if (!this.tokenService.getToken()) {
+      this.isAuthenticated = false
       this.router.navigateByUrl('/');
       return false;
     } else {
+      this.isAuthenticated = true
+      console.log(this.tokenService.getToken())
       return true;
     }
   }

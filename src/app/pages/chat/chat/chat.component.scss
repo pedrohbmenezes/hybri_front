@@ -33,6 +33,7 @@ header{
   }
   ul{
     padding-inline-start: 0;
+    font-size: 19px;
   }
 }
 .message{
@@ -108,3 +109,44 @@ body {
   float: left;
   color: #999;
 }
+ .likeb{
+   $red: #ff3252;
+
+body {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+  margin: 0;
+}
+
+.like-button {
+  display: inline-block;
+  position: relative;
+  font-size: 32px;
+  cursor: pointer;
+  // border: 1px solid black;
+  &::before {
+    font-size: 42px;
+    color: #979797;
+    content: '♥';
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+  }
+  &::after {
+    font-size: 39px;
+    color: $red;
+    content: '♥';
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%) scale(0);
+    transition: transform 0.2s;
+  }
+  &.liked::after {
+    transform: translate(-50%, -50%) scale(1.1);
+  }
+}
+ }

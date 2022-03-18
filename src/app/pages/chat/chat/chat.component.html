@@ -6,21 +6,23 @@
   <tr>
     <th class="members">
       <div>
-        <h2>Members</h2>
+        <h2>Members Online</h2>
       </div>
       <ul>
         <li *ngFor="let user of users" class="cardMember">
-          <span>{{user}}</span>
-          <span>Name</span>
+          <span>{{user.payload}}</span>
         </li>
       </ul>
     </th>
     <th class="message">
       <div style="height: 500px; overflow: auto;">
         <div class="container" *ngFor="let message of messages">
-          <img src="/w3images/bandmember.jpg" alt="Avatar" style="width:100%;">
-          <p>{{message}}</p>
-          <span class="time-right">11:00</span>
+         <div class="likeb" style="text-align: left;">
+          <input #idmessage type="text" style="display: none;" value="{{message.id}}">
+           <button (click)="likedmessage(idmessage)" class="like-button {{message.like}}"></button>
+         </div>
+          <p>{{message.payload}}</p>
+          <span class="time-right">{{message.hour}}</span>
         </div>
       </div>
 
