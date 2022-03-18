@@ -17,7 +17,6 @@ export class AuthGuardService implements CanActivate{
       return false;
     } else {
       this.isAuthenticated = true
-      console.log(this.tokenService.getToken())
       return true;
     }
   }
