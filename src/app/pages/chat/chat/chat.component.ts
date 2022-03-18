@@ -9,7 +9,7 @@ import { Socket } from 'ngx-socket-io';
 })
 export class ChatComponent implements OnInit {
 
-  public users: number = 0;
+  public users: string[] = [];
   public message: string = '';
   public messages: string[] = [];
   constructor(private chatService: SocketService){
@@ -20,14 +20,13 @@ export class ChatComponent implements OnInit {
       console.warn(message)
     });
     this.chatService.getUsers().subscribe((users: any) => {
-      this.users = users;
-      console.warn(users)
+      this.users.push(users)
+      console.warn(this.users)
     });
   }
-  addChat(){
-    this.messages.push(this.message);
-    this.chatService.sendChat(this.message);
-    this.message = '';
+  addChat(message:any){
+    this.chatService.sendChat(message.value);
+    message.value = ""
   }
 
 }
