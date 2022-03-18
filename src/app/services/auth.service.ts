@@ -55,6 +55,14 @@ handleError(error: HttpErrorResponse) {
     );
 
   }
+  sign(username: string, password: string): Observable<any> {
+    const data = `username=${username}&password=${password}`
+    return this.http.post(`${AUTH_API}/auth/sign`, data, httpOptions)
+    .pipe(
+      catchError(this.handleError)
+    );
+
+  }
 
   
 }
